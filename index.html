@@ -3,29 +3,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Library Application</title>
 </head>
 <body>
     <nav class="library">
         <h1>Library</h1>
     </nav>
+    <hr>
 
     <main class="main">
         <div class="fillup-area">
             <h1 class="heading">ADD BOOK</h1>
-            <form action="" method="post" class="form">
-                <label for="bookTitle" class="bookTitle">Book Title</label>
-                <input type="text" name="bookTitle" id="bookTitle">
+            <div class="form">
+                <form action="" method="" class="form">
+                    <div class="area">
+                        <label for="bookTitle" class="books">Book Title</label>
+                    <input type="text" name="bookTitle" id="bookTitle">
+                    </div>
+                    
+                    <div class="area">
+                        <label for="authorName" class="books">Author</label>
+                    <input type="text" name="authorName" id="authorName">
+                    </div>
+                    
+                    <div class="area">
+                        <label for="pages" class="books">Pages</label>
+                    <input type="number" name="pages" id="pages">
+                    </div>
+                    
+                    <div class="area ">
+                        <button class="btn btn-blue">Read</button>
+                    <button class="btn btn-red">Not Read</button>
+                    </div>
 
-                <label for="authorName" class="authorName">Author</label>
-                <input type="text" name="authorName" id="authorName">
-
-                <label for="pages" class="pages">Pages</label>
-                <input type="number" name="pages" id="pages">
-
-                <button class="btn">Read</button>
-                <button class="btn btn-red">Not Read</button>
-            </form>
+                    <div class="area">
+                        <button type="submit" class="btn btn-green">Submit</button>
+                    </div>
+                    
+                </form>
+            </div>
+            
             
         </div>
         <div class="library-showcase">

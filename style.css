@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #a5f3fc;
+}
+.library{
+    padding: 16px;
+    background-color: #99f6e4;
+}
+.library h1{
+    text-align: center;
+    font-size: 42px;
+    text-decoration: underline;
+    margin: 1px 0;
+    color: #701a75;
+}
+
+.main{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.fillup-area{
+    background-color: blanchedalmond;
+}
+.heading{
+    margin: 24px 8px;
+    text-align: center;
+    color: #b91c1c;
+}
+.area{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.library-showcase{
+    background-color: darkgoldenrod;
+}
+.books{
+    font-size: 28px;
+}
+.area input{
+    background: none;
+    border: 2px solid black;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.btn{
+    background: none;
+    cursor: pointer;
+    border-radius: 8px;
+   
+    
+}
+.btn-blue{
+    padding: 8px 24px;
+    margin-bottom: 8px;
+    border: 2px solid black;
+    font-size: 16px;
+    background-color: #fed7aa;
+}
+.btn-red{
+    padding: 8px 13px;
+    border: 2px solid black;
+    font-size: 16px;
+    background-color: #fecaca;
+}
+.btn-green{
+    padding: 6px 56px;
+    font-size: 24px;
+    border: 3px solid #e11d48;
+    background-color: #16a34a;
+}
