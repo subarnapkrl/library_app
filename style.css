@@ -80,4 +80,21 @@ body{
     font-size: 24px;
     border: 3px solid #e11d48;
     background-color: #16a34a;
+    color: white;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    padding: 16px 24px;
+
+}
+.bookz button{
+    margin-top: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 18px;
+    background: #fed7aa;
+    border: 2px solid white;
 }

@@ -33,12 +33,12 @@
                     </div>
                     
                     <div class="area ">
-                        <button class="btn btn-blue">Read</button>
-                    <button class="btn btn-red">Not Read</button>
+                        <button class="btn btn-blue" id="statusRead">Read</button>
+                    <button class="btn btn-red" id="statusNotRead">Not Read</button>
                     </div>
 
                     <div class="area">
-                        <button type="submit" class="btn btn-green">Submit</button>
+                        <button type="submit" onclick="showBooks()" class="btn btn-green" id="submitBtn">Submit</button>
                     </div>
                     
                 </form>
@@ -46,8 +46,21 @@
             
             
         </div>
+
+        
         <div class="library-showcase">
             <h1 class="heading">YOUR BOOK</h1>
+            <div class="list">
+                <!-- <div class="bookz">
+                    <h1 class="heading">Book 1</h1>
+                    <h1 class="temp">Title: Harry Potter</h1>
+                    <h1>Author: J.K. Rowling</h1>
+                    <h1>Pages: 1999</h1>
+                    <h1>Status: Read</h1>
+                    <button>Delete</button>
+                </div> -->
+                
+            </div>
         </div>
     </main>
     <script src="./app.js"></script>
