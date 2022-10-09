@@ -14,9 +14,12 @@
 
     <main class="main">
         <div class="fillup-area">
-            <h1 class="heading">ADD BOOK</h1>
-            <div class="form">
-                <form action="" method="" class="form">
+            <div class="center">
+                <button class="add-book-button" >Add New Book</button>
+            </div>
+            
+            <div class="form" style="display: none;">
+                <form action="" method="" class="form" id="books-heading">
                     <div class="area">
                         <label for="bookTitle" class="books">Book Title</label>
                     <input type="text" name="bookTitle" id="bookTitle">
@@ -38,7 +41,8 @@
                     </div>
 
                     <div class="area">
-                        <button type="submit" onclick="showBooks()" class="btn btn-green" id="submitBtn">Submit</button>
+                        <button type="submit"  class="btn btn-green" id="submitBtn">Submit</button>
+                        <button type="reset"  class="btn btn-green" id="submitBtn">Reset</button>
                     </div>
                     
                 </form>
@@ -51,16 +55,10 @@
         <div class="library-showcase">
             <h1 class="heading">YOUR BOOK</h1>
             <div class="list">
-                <!-- <div class="bookz">
-                    <h1 class="heading">Book 1</h1>
-                    <h1 class="temp">Title: Harry Potter</h1>
-                    <h1>Author: J.K. Rowling</h1>
-                    <h1>Pages: 1999</h1>
-                    <h1>Status: Read</h1>
-                    <button>Delete</button>
-                </div> -->
+                
                 
             </div>
+            
         </div>
     </main>
     <script src="./app.js"></script>
