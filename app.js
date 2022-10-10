@@ -23,6 +23,15 @@ function showBooks()
 {
     let bookShow=document.querySelector('.list');
 
+    //Deleting every existing card before looping over again
+
+    let removeDivs=document.querySelectorAll('.card');
+
+    for(let i=0;i<removeDivs.length;i++)
+    {
+        removeDivs[i].remove();
+    }
+
     myLibrary.forEach((myLib)=>{
         let card=document.createElement('div');
         card.classList.add('bookz');
@@ -45,3 +54,41 @@ function showBooks()
 // console.log("End of Second Book");
 
 // showBooks();
+
+
+let addBtn=document.querySelector('.add-book-button');
+
+addBtn.addEventListener('click',function()
+{
+    document.querySelector('.form').style.display='';
+})
+
+let submitBtn=document.querySelector('#submitBtn');
+
+submitBtn.addEventListener('click',submitForm);
+
+function submitForm()
+{
+    let Title=document.querySelector('#bookTitle').value;
+    let Author=document.querySelector('#authorName').value;
+    let Pages=document.querySelector('#pages').value;
+    let Status=document.querySelector('#status').value;
+
+    if((Title=="") || (Author=="") || (Pages=="") || (Status==""))
+    {
+        alert("You have to fill up all the details!");
+    }
+
+    addBookToLibrary(Title,Author,Pages,Status);
+    console.log(addBookToLibrary(Title,Author,Pages,Status))
+    
+
+    document.querySelector('.form').reset();
+    
+}
+
+let resetBtn=document.querySelector('#resetBtn');
+resetBtn.addEventListener('click',function()
+{
+    document.querySelector('.form').reset();
+})
