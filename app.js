@@ -25,7 +25,7 @@ function showBooks()
 
     //Deleting every existing card before looping over again
 
-    let removeDivs=document.querySelectorAll('.card');
+    let removeDivs=document.querySelectorAll('.bookz');
 
     for(let i=0;i<removeDivs.length;i++)
     {
@@ -67,7 +67,7 @@ let submitBtn=document.querySelector('#submitBtn');
 
 submitBtn.addEventListener('click',submitForm);
 
-function submitForm()
+function submitForm(e)
 {
     let Title=document.querySelector('#bookTitle').value;
     let Author=document.querySelector('#authorName').value;
@@ -80,9 +80,9 @@ function submitForm()
     }
 
     addBookToLibrary(Title,Author,Pages,Status);
-    console.log(addBookToLibrary(Title,Author,Pages,Status))
+   
     
-
+    e.preventDefault();
     document.querySelector('.form').reset();
     
 }
@@ -90,5 +90,6 @@ function submitForm()
 let resetBtn=document.querySelector('#resetBtn');
 resetBtn.addEventListener('click',function()
 {
+    
     document.querySelector('.form').reset();
 })
