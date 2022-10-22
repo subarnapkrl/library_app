@@ -10,58 +10,47 @@
     <nav class="library">
         <h1>Library</h1>
     </nav>
-    <hr>
 
-    <main class="main">
-        <div class="fillup-area">
-            <div class="center">
-                <button class="add-book-button" >+ Add New Book</button>
-            </div>
-            <hr>
-            <div class="form" style="display: none;">
-                <form action="" method="" class="formz" id="books-heading">
-                    <div class="area">
-                        <label for="bookTitle" class="books">Book Title</label>
-                    <input type="text" name="bookTitle" id="bookTitle">
-                    </div>
-                    
-                    <div class="area">
-                        <label for="authorName" class="books">Author</label>
-                    <input type="text" name="authorName" id="authorName">
-                    </div>
-                    
-                    <div class="area">
-                        <label for="pages" class="books">Pages</label>
-                    <input type="number" name="pages" id="pages">
-                    </div>
-                    
-                    <div class="area ">
-                        <label for="status" class="books">Status</label>
-                        <input type="text" name="status" id="status">
-                    </div>
 
-                    <div class="area">
-                        <button type="submit"  class="btn btn-green" id="submitBtn">Submit</button>
-                        <button type="reset"  class="btn btn-red" id="resetBtn">Reset</button>
-                    </div>
+   <div class="container">
+        <div class="form-heading">
+            <h1>ADD NEW BOOK TO THE LIBRARY</h1>
+        </div>
+        <div class="books-heading">
+            <h1>CURRENT BOOKS IN LIBRARY</h1>
+        </div>
+        <div class="form">
+            <button class="add-book-btn">+ Add Book</button>
+            <div id="add-book-form" style="display: none;">
+                <form action="" id="add-book">
+                    <label for="Title">Title</label>
+                    <input type="text" name="Title" id="Title">
+
+                    <label for="Author">Author</label>
+                    <input type="text" name="Author" id="Author">
+
+                    <label for="Pages">Pages</label>
+                    <input type="number" name="Pages" id="Pages">
+
+                    <label for="Status"></label>
+                    <div class="stat">
+
+                    
+                     <label for="Read">Read</label>
+                    <input type="radio" name="Read" id="Read" value="Read" >
+                    <label for="Not Read">Not Read</label>
+                    <input type="radio" name="Not Read" id="NotRead" value="Not Read">
+                </div>
                     
                 </form>
+                <button type="submit" class="submitBtn">Submit</button>
+                <button type="reset" class="resetBtn">Reset</button>
             </div>
-            
-            
         </div>
+        <div class="books">
 
-        
-        <div class="library-showcase">
-            <h1 class="heading">YOUR BOOK</h1>
-            <hr>
-            <div class="list">
-                
-                
-            </div>
-            
         </div>
-    </main>
+   </div>
     <script src="./app.js"></script>
 </body>
 </html>
