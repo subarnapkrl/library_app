@@ -21,75 +21,78 @@ function addBookToLibrary(title,author,pages,status)
 
 function showBooks()
 {
-    let bookShow=document.querySelector('.list');
+    let books=document.querySelector(".books");
 
-    //Deleting every existing card before looping over again
-
-    let removeDivs=document.querySelectorAll('.bookz');
-
-    for(let i=0;i<removeDivs.length;i++)
+    //Deleting Multiple same card on submit
+    let removeDiv=document.querySelectorAll(".card");
+    for(let i=0;i<removeDiv.length;i++)
     {
-        removeDivs[i].remove();
+        removeDiv[i].remove();
     }
 
-    myLibrary.forEach((myLib)=>{
-        let card=document.createElement('div');
-        card.classList.add('bookz');
-        bookShow.appendChild(card);
+    myLibrary.forEach(myLib=>{
+        let card=document.createElement("div");
+        card.classList.add("card");
+        books.appendChild(card);
 
-        for(let reqBook in myLib)
+        for(let key in myLib)
         {
-            console.log(`${reqBook}: ${myLib[reqBook]}`);
+            console.log(`${key}:${myLib[key]}`);
 
-            let paragraph=document.createElement('p');
-            paragraph.textContent=(`${reqBook}: ${myLib[reqBook]}`);
-            card.appendChild(paragraph);
+            let parag=document.createElement("p");
+            parag.textContent=(`${key} : ${myLib[key]}`);
+            card.appendChild(parag);
+
         }
-
     })
 }
-// addBookToLibrary("The Hobbit","J.r.r Tolkien","295 pages","Not read");
-// console.log("End OF First Book");
-// addBookToLibrary("Harry Potter","J.K. Rowling","999 pages"," read");
-// console.log("End of Second Book");
 
-// showBooks();
-
-
-let addBtn=document.querySelector('.add-book-button');
-
-addBtn.addEventListener('click',function()
+let addNewBookBtn=document.querySelector(".add-book-btn");
+addNewBookBtn.addEventListener("click",function()
 {
-    document.querySelector('.form').style.display='';
+    document.querySelector("#add-book-form").style.display="";
 })
 
-let submitBtn=document.querySelector('#submitBtn');
+let submitBtn=document.querySelector(".submitBtn");
+submitBtn.addEventListener("click",takeTheForm);
 
-submitBtn.addEventListener('click',submitForm);
-
-function submitForm(e)
+function takeTheForm()
 {
-    let Title=document.querySelector('#bookTitle').value;
-    let Author=document.querySelector('#authorName').value;
-    let Pages=document.querySelector('#pages').value;
-    let Status=document.querySelector('#status').value;
+    let Title=document.getElementById("Title").value;
+    let Author=document.getElementById("Author").value;
+    let Pages=document.getElementById("Pages").value;
+    let Status;
+    let Read=document.getElementById("Read");
+    let NotRead=document.getElementById("NotRead");
 
-    if((Title=="") || (Author=="") || (Pages=="") || (Status==""))
+
+    if(Read.checked)
     {
-        alert("You have to fill up all the details!");
+        Status=Read.value;
+
+    }
+    else if(NotRead.checked)
+    {
+        Status=NotRead.value;
+    }
+
+    if(Title=="" || Author=="" || Pages=="" || Status=="")
+    {
+        return;
     }
 
     addBookToLibrary(Title,Author,Pages,Status);
-   
-    
-    e.preventDefault();
-    document.querySelector('.form').reset();
-    
+
+    document.querySelector("#add-book").reset();
 }
 
-let resetBtn=document.querySelector('#resetBtn');
-resetBtn.addEventListener('click',function()
+let resetBtn=document.querySelector(".resetBtn");
+resetBtn.addEventListener("click",function()
 {
-    
-    document.querySelector('.form').reset();
+    document.querySelector("#add-book").reset();
 })
+
+
+// addBookToLibrary("The Hobbit","J.R.R Tolkien","295","Not Read");
+// addBookToLibrary("Harry Potter","J.K. Rowling","2950","Read");
+// console.log(myLibrary);
