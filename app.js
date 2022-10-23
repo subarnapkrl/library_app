@@ -29,11 +29,34 @@ function showBooks()
     {
         removeDiv[i].remove();
     }
-
+    // LOOPING AND DISPLAYING CARD
+    let index=0;
     myLibrary.forEach(myLib=>{
         let card=document.createElement("div");
         card.classList.add("card");
         books.appendChild(card);
+
+        //Creating Remove Book Button
+
+        let removeBookBtn=document.createElement("button");
+        removeBookBtn.classList.add("remove-book-button");
+        removeBookBtn.textContent="Remove";
+        console.log("Show me my current array ",myLibrary);
+
+        //Link the data attribute of the remove button to the array and card
+        removeBookBtn.dataset.linkedArray=index;
+        index++;
+        console.log("Show me the dataset link back to the array",removeBookBtn.dataset.linkedArray);
+        card.appendChild(removeBookBtn);
+
+        removeBookBtn.addEventListener("click",function()
+        {
+            let retrieveBookToRemove=removeBookBtn.dataset.linkedArray;
+            console.log("Trying to remove array to int",parseInt(retrieveBookToRemove));
+            myLibrary.splice(parseInt(retrieveBookToRemove),1);
+            card.remove();
+            showBooks();
+        })
 
         for(let key in myLib)
         {
