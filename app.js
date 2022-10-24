@@ -1,19 +1,19 @@
 let myLibrary=[];
 
 class Book{
-    constructor(Title,Author,Pages,Status)
+    constructor(Title,Author,Pages,Read)
     {
         this.Title=Title;
         this.Author=Author;
         this.Pages=Pages;
-        this.Status=Status;
+        this.Read=Read;
     }
 }
 
 
-function addBookToLibrary(title,author,pages,status)
+function addBookToLibrary(title,author,pages,read)
 {
-   let yourBooks=new Book(title,author,pages,status);
+   let yourBooks=new Book(title,author,pages,read);
    myLibrary.push(yourBooks);
    showBooks();
 }
@@ -29,6 +29,7 @@ function showBooks()
     {
         removeDiv[i].remove();
     }
+
     // LOOPING AND DISPLAYING CARD
     let index=0;
     myLibrary.forEach(myLib=>{
@@ -45,7 +46,7 @@ function showBooks()
 
         //Link the data attribute of the remove button to the array and card
         removeBookBtn.dataset.linkedArray=index;
-        index++;
+        
         console.log("Show me the dataset link back to the array",removeBookBtn.dataset.linkedArray);
         card.appendChild(removeBookBtn);
 
@@ -58,6 +59,36 @@ function showBooks()
             showBooks();
         })
 
+        //CREATE TOGGLE BUTTON
+        let readStatusButton=document.createElement("button");
+        readStatusButton.classList.add("read-status-btn");
+        readStatusButton.textContent="Change Status";
+
+        //LINK THE DATA ATTRIBUTE OF THE TOGGLE BUTTON TO THE ARRAY AND THE CARD
+        readStatusButton.dataset.linkedArray=index;
+        console.log("Show the dataset link back to the array",readStatusButton.dataset.linkedArray);
+        card.appendChild(readStatusButton);
+
+        readStatusButton.addEventListener("click",toggleReadStatus);
+
+        function toggleReadStatus()
+        {
+            let retreiveBookToToggle=readStatusButton.dataset.linkedArray;
+            Book.prototype=Object.create(Book.prototype);
+            let toggleBook=new Book();
+            console.log("What is the toggle initial value?",myLibrary[parseInt(retreiveBookToToggle)].Read);
+
+            if((myLibrary[parseInt(retreiveBookToToggle)].Read)=="Already Read")
+            {
+                toggleBook.Read="Not Yet";
+                myLibrary[parseInt(retreiveBookToToggle)].Read=toggleBook.Read;
+            }else if((myLibrary[parseInt(retreiveBookToToggle)].Read)=="Not Yet"){
+                toggleBook.Read="Already Read";
+                myLibrary[parseInt(retreiveBookToToggle)].Read=toggleBook.Read;
+            }
+            showBooks();
+        }
+
         for(let key in myLib)
         {
             console.log(`${key}:${myLib[key]}`);
@@ -67,6 +98,7 @@ function showBooks()
             card.appendChild(parag);
 
         }
+        index++;
     })
 }
 
@@ -84,27 +116,24 @@ function takeTheForm()
     let Title=document.getElementById("Title").value;
     let Author=document.getElementById("Author").value;
     let Pages=document.getElementById("Pages").value;
-    let Status;
-    let Read=document.getElementById("Read");
-    let NotRead=document.getElementById("NotRead");
+    let Read=document.getElementById("Read").value;
 
+    // if(Read.checked)
+    // {
+    //     Status=Read.value;
 
-    if(Read.checked)
-    {
-        Status=Read.value;
+    // }
+    // else if(NotRead.checked)
+    // {
+    //     Status=NotRead.value;
+    // }
 
-    }
-    else if(NotRead.checked)
-    {
-        Status=NotRead.value;
-    }
-
-    if(Title=="" || Author=="" || Pages=="" || Status=="")
+    if(Title=="" || Author=="" || Pages=="" || Read=="")
     {
         return;
     }
 
-    addBookToLibrary(Title,Author,Pages,Status);
+    addBookToLibrary(Title,Author,Pages,Read);
 
     document.querySelector("#add-book").reset();
 }
