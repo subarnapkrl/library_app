@@ -74,8 +74,12 @@ body{
 #add-book input{
     font-size: 28px;
 }
-.stat input#Read{
-    font-size: 24px;
+
+option{
+    font-size: 28px;
+}
+select#Read{
+    font-size: 28px;
 }
 
 .resetBtn{
@@ -92,13 +96,7 @@ body{
     font-size: 20px;
 }
 
-.stat{
-    display: flex;
-    gap: 10px;
-    /* justify-content: space-evenly; */
-    align-items: center;
-    text-align: center;
-}
+
 .remove-book-button{
     grid-row: 5/6;
     font-weight: 900;
@@ -111,4 +109,18 @@ body{
 }
 .remove-book-button:hover{
     background-color: #991b1b;
+}
+.read-status-btn{
+    grid-row: 6/6;
+    margin-top: 10px;
+    font-weight: 900;
+    background-color: #4d7c0f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+}
+.read-status-btn:hover{
+    background-color: #4ade80;
 }
