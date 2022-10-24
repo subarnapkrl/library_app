@@ -32,15 +32,11 @@
                     <label for="Pages">Pages</label>
                     <input type="number" name="Pages" id="Pages">
 
-                    <label for="Status"></label>
-                    <div class="stat">
-
-                    
-                     <label for="Read">Read</label>
-                    <input type="radio" name="Read" id="Read" value="Read" >
-                    <label for="Not Read">Not Read</label>
-                    <input type="radio" name="Not Read" id="NotRead" value="Not Read">
-                </div>
+                    <label for="Read">Read</label>
+                    <select name="Read" id="Read">
+                        <option value="Already Read">Already Read</option>
+                        <option value="Not Yet">Not Yet</option>
+                    </select>
                     
                 </form>
                 <button type="submit" class="submitBtn">Submit</button>
