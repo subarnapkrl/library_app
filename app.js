@@ -1,150 +1,156 @@
 let myLibrary=[];
 
-class Book{
-    constructor(Title,Author,Pages,Read)
-    {
-        this.Title=Title;
-        this.Author=Author;
-        this.Pages=Pages;
-        this.Read=Read;
-    }
+function Book(Title,Author,Pages,Status)
+{
+    this.Title=Title;
+    this.Author=Author;
+    this.Pages=Pages;
+    this.Status=Status;
+    
+
+}
+function addBookToLibrary(title,author,page,status)
+{
+    let newBook=new Book(title,author,page,status);
+    myLibrary.push(newBook);
+    displayBooks();
+    console.log(myLibrary);
 }
 
+let showDiv=document.querySelector(".yourBooks");
+let addBookBtn=document.querySelector(".dispForm");
 
-function addBookToLibrary(title,author,pages,read)
+addBookBtn.addEventListener("click",function(){
+    document.querySelector(".form").style.display="";
+})
+
+function displayBooks()
 {
-   let yourBooks=new Book(title,author,pages,read);
-   myLibrary.push(yourBooks);
-   showBooks();
-}
-
-
-function showBooks()
-{
-    let books=document.querySelector(".books");
-
-    //Deleting Multiple same card on submit
-    let removeDiv=document.querySelectorAll(".card");
-    for(let i=0;i<removeDiv.length;i++)
-    {
-        removeDiv[i].remove();
-    }
-
-    // LOOPING AND DISPLAYING CARD
     let index=0;
-    myLibrary.forEach(myLib=>{
-        let card=document.createElement("div");
-        card.classList.add("card");
-        books.appendChild(card);
+    
+    removeBookCards();
 
-        //Creating Remove Book Button
+    myLibrary.forEach((book)=>{
 
-        let removeBookBtn=document.createElement("button");
-        removeBookBtn.classList.add("remove-book-button");
-        removeBookBtn.textContent="Remove";
-        console.log("Show me my current array ",myLibrary);
+      
+      let bookCard=document.createElement("div");
+      bookCard.classList.add(".card");
+      let bookTitle=document.createElement("h2");
+      let bookAuthor=document.createElement("h2");
+      let bookPages=document.createElement("h2");
+      let bookStatus=document.createElement("h2");
 
-        //Link the data attribute of the remove button to the array and card
-        removeBookBtn.dataset.linkedArray=index;
+
+      let bookDeleteBtn=document.createElement("button");
+      bookDeleteBtn.classList.add("Delbttn");
+      
+      let bookDeleteBtnText=document.createTextNode("Delete");
+      bookDeleteBtn.appendChild(bookDeleteBtnText);
+
+      let statusModifyBtn=document.createElement("button");
+      statusModifyBtn.classList.add("Modbttn");
+      
+      let statusModifyBtnText=document.createTextNode("Read/Unread");
+      statusModifyBtn.appendChild(statusModifyBtnText);
+
+      bookTitle.textContent=`Title:- ${book.Title}`;
+      bookAuthor.textContent=`Author:- ${book.Author}`;
+      bookPages.textContent=`Pages:- ${book.Pages}`;
+      bookStatus.innerText=`Status:- ${book.Status}`;
+
+    
+    
+
+      bookCard.appendChild(bookTitle);
+      bookCard.appendChild(bookAuthor);
+      bookCard.appendChild(bookPages);
+      bookCard.appendChild(bookStatus);
+      bookCard.appendChild(bookDeleteBtn);
+      bookCard.appendChild(statusModifyBtn);
+
+
+      
+
+      showDiv.appendChild(bookCard);
+
         
-        console.log("Show me the dataset link back to the array",removeBookBtn.dataset.linkedArray);
-        card.appendChild(removeBookBtn);
 
-        removeBookBtn.addEventListener("click",function()
+      bookDeleteBtn.dataset.linkedArray=index;
+        bookDeleteBtn.addEventListener("click",function()
         {
-            let retrieveBookToRemove=removeBookBtn.dataset.linkedArray;
+            let retrieveBookToRemove=bookDeleteBtn.dataset.linkedArray;
+            console.log(bookDeleteBtn.dataset.linkedArray)
             console.log("Trying to remove array to int",parseInt(retrieveBookToRemove));
             myLibrary.splice(parseInt(retrieveBookToRemove),1);
-            card.remove();
-            showBooks();
+            bookCard.remove();
+            displayBooks();
         })
 
-        //CREATE TOGGLE BUTTON
-        let readStatusButton=document.createElement("button");
-        readStatusButton.classList.add("read-status-btn");
-        readStatusButton.textContent="Change Status";
+        statusModifyBtn.dataset.linkedArray=index;
 
-        //LINK THE DATA ATTRIBUTE OF THE TOGGLE BUTTON TO THE ARRAY AND THE CARD
-        readStatusButton.dataset.linkedArray=index;
-        console.log("Show the dataset link back to the array",readStatusButton.dataset.linkedArray);
-        card.appendChild(readStatusButton);
-
-        readStatusButton.addEventListener("click",toggleReadStatus);
-
-        function toggleReadStatus()
+        statusModifyBtn.addEventListener("click",function()
         {
-            let retreiveBookToToggle=readStatusButton.dataset.linkedArray;
+            let retrieveBookToRemove=statusModifyBtn.dataset.linkedArray;
+
             Book.prototype=Object.create(Book.prototype);
             let toggleBook=new Book();
-            console.log("What is the toggle initial value?",myLibrary[parseInt(retreiveBookToToggle)].Read);
+            console.log("What is the toggle initial value?",myLibrary[parseInt(retrieveBookToRemove)].Status);
 
-            if((myLibrary[parseInt(retreiveBookToToggle)].Read)=="Already Read")
+            if(myLibrary[parseInt(retrieveBookToRemove)].Status=="Already Read")
             {
-                toggleBook.Read="Not Yet";
-                myLibrary[parseInt(retreiveBookToToggle)].Read=toggleBook.Read;
-            }else if((myLibrary[parseInt(retreiveBookToToggle)].Read)=="Not Yet"){
-                toggleBook.Read="Already Read";
-                myLibrary[parseInt(retreiveBookToToggle)].Read=toggleBook.Read;
+                toggleBook.Status="Not Read Yet";
+                myLibrary[parseInt(retrieveBookToRemove)].Status=toggleBook.Status;
+            }else if(myLibrary[parseInt(retrieveBookToRemove)].Status=="Not Read Yet"){
+                toggleBook.Status="Already Read";
+                myLibrary[parseInt(retrieveBookToRemove)].Status=toggleBook.Status;
             }
-            showBooks();
-        }
 
-        for(let key in myLib)
-        {
-            console.log(`${key}:${myLib[key]}`);
+            displayBooks();
+        })
 
-            let parag=document.createElement("p");
-            parag.textContent=(`${key} : ${myLib[key]}`);
-            card.appendChild(parag);
-
-        }
+       
         index++;
+       
     })
+    
+
+    
 }
 
-let addNewBookBtn=document.querySelector(".add-book-btn");
-addNewBookBtn.addEventListener("click",function()
+function removeBookCards()
 {
-    document.querySelector("#add-book-form").style.display="";
-})
-
-let submitBtn=document.querySelector(".submitBtn");
-submitBtn.addEventListener("click",takeTheForm);
-
-function takeTheForm()
-{
-    let Title=document.getElementById("Title").value;
-    let Author=document.getElementById("Author").value;
-    let Pages=document.getElementById("Pages").value;
-    let Read=document.getElementById("Read").value;
-
-    // if(Read.checked)
-    // {
-    //     Status=Read.value;
-
-    // }
-    // else if(NotRead.checked)
-    // {
-    //     Status=NotRead.value;
-    // }
-
-    if(Title=="" || Author=="" || Pages=="" || Read=="")
+    
+    while(showDiv.firstChild)
     {
-        return;
+        showDiv.removeChild(showDiv.lastChild);
     }
-
-    addBookToLibrary(Title,Author,Pages,Read);
-
-    document.querySelector("#add-book").reset();
 }
+let submitBtn=document.querySelector("#submitBtn");
 
-let resetBtn=document.querySelector(".resetBtn");
-resetBtn.addEventListener("click",function()
-{
-    document.querySelector("#add-book").reset();
-})
+      submitBtn.addEventListener("click",submitFunc);
+      
+
+      function submitFunc(e)
+      {
+        event.preventDefault();
+        let Title=document.getElementById("name").value;
+        let Author=document.getElementById("author").value;
+        let Pages=document.getElementById("pages").value;
+        let Status=document.getElementById("read").value;
+        
+
+        if(Title=="" || Author=="" || Pages=="" || Status=="")
+        {
+            alert("Please you have to complete all details to proceed!");
+            return;
+        }
+    
+        addBookToLibrary(Title,Author,Pages,Status);
+
+        document.querySelector(".form").reset();
+      }
+
+      
+   
 
 
-// addBookToLibrary("The Hobbit","J.R.R Tolkien","295","Not Read");
-// addBookToLibrary("Harry Potter","J.K. Rowling","2950","Read");
-// console.log(myLibrary);
