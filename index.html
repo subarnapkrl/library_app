@@ -4,49 +4,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Library Application</title>
+    <script src="app.js" defer></script>
+    <title>Library Project</title>
 </head>
 <body>
-    <nav class="library">
-        <h1>Library</h1>
-    </nav>
+    <div class="container">
 
+        <div class="left">
+            <div class="heading"><h1>ADD YOUR BOOK</h1></div>
+            <button class="dispForm" >Add Book</button>
+            <form action="" onsubmit="submitFunc()" class="form" style="display: none;">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="in">
 
-   <div class="container">
-        <div class="form-heading">
-            <h1>ADD NEW BOOK TO THE LIBRARY</h1>
-        </div>
-        <div class="books-heading">
-            <h1>CURRENT BOOKS IN LIBRARY</h1>
-        </div>
-        <div class="form">
-            <button class="add-book-btn">+ Add Book</button>
-            <div id="add-book-form" style="display: none;">
-                <form action="" id="add-book">
-                    <label for="Title">Title</label>
-                    <input type="text" name="Title" id="Title">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" class="in">
 
-                    <label for="Author">Author</label>
-                    <input type="text" name="Author" id="Author">
+                <label for="pages">Pages</label>
+                <input type="number" name="pages" id="pages" class="in">
 
-                    <label for="Pages">Pages</label>
-                    <input type="number" name="Pages" id="Pages">
-
-                    <label for="Read">Read</label>
-                    <select name="Read" id="Read">
+                <label for="Read">Status</label>
+                    <select name="Read" id="read" class="in">
                         <option value="Already Read">Already Read</option>
-                        <option value="Not Yet">Not Yet</option>
+                        <option value="Not Read Yet">Not Read Yet</option>
                     </select>
-                    
-                </form>
-                <button type="submit" class="submitBtn">Submit</button>
-                <button type="reset" class="resetBtn">Reset</button>
+                
+                <button type="submit" id="submitBtn" class="btn btn-submit">Submit</button>
+            <button type="reset" id="resetBtn" class="btn btn-reset">Reset</button>
+            </form>
+
+            
+        </div>
+
+        <div class="right">
+            <h1 class="heading">YOUR BOOK</h1>
+            <div class="yourBooks">
+                
             </div>
         </div>
-        <div class="books">
 
-        </div>
-   </div>
-    <script src="./app.js"></script>
+    </div>
+    
 </body>
 </html>
